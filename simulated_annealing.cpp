@@ -23,7 +23,7 @@ int doAction(int*, int, int, vector<int>&);//交换皇后位置
 int next_state(int*, vector<int>&);		   //下一状态
 
 int main() {
-	const char *pathInput = "C:/Users/95850/Desktop/Mine/作业/人工智能基础/PB15111650_郭秋洋_实验一/N皇后/input.txt";
+	const char *pathInput = "input.txt";
 	freopen(pathInput, "r", stdin);//重定向输入流到指定文件
 	scanf("%d %d", &N, &M);
 	freopen("CON", "r", stdin);//重定向输入流到windows控制台
@@ -53,7 +53,7 @@ int main() {
 		if (collision == M) {
 			QueryPerformanceCounter(&t2);//算法结束时间
 			cout << "尝试次数 " << tries << "交换次数 " << steps << endl;
-			const char *pathInput = "C:/Users/95850/Desktop/Mine/作业/人工智能基础/PB15111650_郭秋洋_实验一/N皇后/output_simulated_annealing.txt";
+			const char *pathInput = "output_simulated_annealing.txt";
 			freopen(pathInput, "w", stdout);//重定向输入流到指定文件
 			for (int i = 0; i<N; ++i) {
 				cout << status[i] << endl;
