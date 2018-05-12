@@ -47,7 +47,7 @@ int main() {
 
 		while ((collision != M) && (steps < max_steps)) {
 			collision = next_state(status, collision_list);
-			++steps;
+			steps++;
 		}
 
 		if (collision == M) {
@@ -106,7 +106,8 @@ int doAction(int *status, int row1, int row2, vector<int>& cl) {
 	vector<int> new_cl;
 	swap(status[row1], status[row2]);
 	int new_collision = evaluate(status, new_cl);
-	if (cl.size() < new_collision) {
+	int old_collision = cl.size();
+	if (abs(new_collision - M) > abs(old_collision - M)) {
 		if (rand() % 2 < temperature) {
 			acceptFlag = true;
 			temperature *= 0.5;//ÍË»ð
@@ -142,7 +143,7 @@ int next_state(int *status, vector<int>& cl) {
 
 		acceptFlag = false;
 		new_collision = doAction(status, row1, row2, cl);
-	} while (new_collision > old_collision || acceptFlag);
+	} while (abs(new_collision - M) > abs(old_collision - M) || acceptFlag);
 
 	return new_collision;
 }
